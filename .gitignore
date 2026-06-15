@@ -1,0 +1,12 @@
+# local virtual environment created on first run
+.venv/
+
+# remembered Override-folder path (machine-specific)
+.reward_editor_path
+
+# backups written on save
+Reward_Backup_*/
+
+# python bytecode
+__pycache__/
+*.py[cod]
