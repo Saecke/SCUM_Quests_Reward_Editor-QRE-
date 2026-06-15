@@ -238,10 +238,6 @@ class App(tk.Tk):
         self.bf = {k: tk.BooleanVar(value=(k == "money")) for k in ("money", "gold", "fame", "xp")}
         for i, (k, lbl) in enumerate([("money", "Money"), ("gold", "Gold"), ("fame", "Fame"), ("xp", "XP")]):
             ttk.Checkbutton(b, text=lbl, variable=self.bf[k]).grid(row=0, column=2 + i, padx=4)
-        self.skip_skill = tk.BooleanVar(value=True)
-        ttk.Checkbutton(b, text="Exclude skill quests (Skillmaster folder)", variable=self.skip_skill)\
-            .grid(row=0, column=7, padx=10)
-
         self.b_factor = tk.StringVar(value="1.0")
         self.b_offset = tk.StringVar(value="0")
         self.b_round = tk.StringVar(value="0")
@@ -338,10 +334,7 @@ class App(tk.Tk):
         self.status.config(text=f"'{q.title}' updated (not saved yet).")
 
     def _bulk_targets(self):
-        rows = self.quests if self.bulk_scope.get() == "all" else self.filtered()
-        if self.skip_skill.get():
-            rows = [q for q in rows if q.folder != "Skillmaster"]
-        return rows
+        return self.quests if self.bulk_scope.get() == "all" else self.filtered()
 
     def apply_bulk(self, preview):
         fields = {k for k, v in self.bf.items() if v.get()}

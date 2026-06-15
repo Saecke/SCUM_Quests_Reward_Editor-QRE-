@@ -62,8 +62,8 @@ folder that contains it). Your choice is remembered for next time.
   then **Apply (in memory)**.
 - **Bulk edit:** pick fields (Money/Gold/Fame/XP), set `new = old × factor + offset`,
   optionally round to a step. Scope is *filtered only* or *ALL quests*. Use
-  **Preview** before **Apply**. The *Exclude skill quests* checkbox protects a
-  `Skillmaster` folder from accidental scaling.
+  **Preview** before **Apply**. Tip: set the filters first and use *filtered only*
+  to limit scaling to exactly the quests you want.
 - **Save:** changes stay in memory (changed rows are highlighted) until you press
   **Save ALL**, which writes the files and drops a `Reward_Backup_<timestamp>/`
   next to your `Override` folder containing the untouched originals.

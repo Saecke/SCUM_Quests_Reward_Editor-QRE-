@@ -330,8 +330,6 @@ class App(QMainWindow):
         for i, (k, lbl) in enumerate((("money", "Money"), ("gold", "Gold"), ("fame", "Fame"), ("xp", "XP"))):
             cb = QCheckBox(lbl); cb.setChecked(k == "money"); self.bf[k] = cb
             g.addWidget(cb, 0, 2 + i)
-        self.cb_skip = QCheckBox("Exclude skill quests (Skillmaster folder)"); self.cb_skip.setChecked(True)
-        g.addWidget(self.cb_skip, 0, 7)
         self.e_factor = QLineEdit("1.0"); self.e_offset = QLineEdit("0"); self.e_round = QLineEdit("0")
         for w in (self.e_factor, self.e_offset, self.e_round): w.setMaximumWidth(80)
         g.addWidget(QLabel("x factor"), 1, 0, Qt.AlignmentFlag.AlignRight); g.addWidget(self.e_factor, 1, 1)
@@ -439,10 +437,7 @@ class App(QMainWindow):
         self.lbl_status.setText(f"'{q.title}' updated (not saved yet).")
 
     def _bulk_targets(self):
-        rows = self.quests if self.rb_all.isChecked() else self.filtered()
-        if self.cb_skip.isChecked():
-            rows = [q for q in rows if q.folder != "Skillmaster"]
-        return rows
+        return self.quests if self.rb_all.isChecked() else self.filtered()
 
     def _bulk_params(self):
         fields = {k for k, cb in self.bf.items() if cb.isChecked()}
