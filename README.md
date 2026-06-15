@@ -20,29 +20,58 @@ Two interchangeable builds are included:
 
 ## Requirements
 
-- **Python 3.8+**
-- For the Qt build: PySide6 — **installed automatically** on first start.
-- For the Tkinter build: `tkinter`, bundled with Python on Windows/macOS.
-  On Debian/Ubuntu/Mint install it once with `sudo apt install python3-tk`.
+Only **Python 3.8+** is required. Everything else is handled per build:
 
-## Run
+- **Qt build** (`reward_editor.py`) — installs PySide6 automatically on first start.
+- **Tkinter build** (`reward_editor_tk.py`) — no extra packages on Windows/macOS;
+  on Linux you may need the system `tkinter` package (see below).
+
+## Install & Run
+
+The tool runs on **Windows, Linux and macOS**. Pick your OS:
+
+### 🪟 Windows
+
+1. Install Python from [python.org](https://www.python.org/downloads/) and tick
+   **"Add python.exe to PATH"** in the installer. (Tkinter is included.)
+2. Download/clone this folder, then **double-click `reward_editor.py`** — or open
+   a terminal in the folder and run:
+   ```bat
+   python reward_editor.py          REM Qt build (recommended)
+   python reward_editor_tk.py       REM no-dependency Tkinter build
+   ```
+   Tip: to start without a console window, use `pythonw reward_editor.py`.
+
+### 🐧 Linux
 
 ```bash
 python3 reward_editor.py          # Qt build (recommended)
-# or
-python3 reward_editor_tk.py       # dependency-free Tkinter build
+python3 reward_editor_tk.py       # no-dependency Tkinter build
+```
+For the Qt build's auto-installer you may need `python3-venv`, and for the
+Tkinter build `python3-tk` (Debian/Ubuntu/Mint):
+```bash
+sudo apt install python3-venv python3-tk
 ```
 
-### First start (Qt build)
+### 🍎 macOS
 
-If PySide6 is missing, the script creates a local `.venv` next to itself,
+Install Python from [python.org](https://www.python.org/downloads/) (includes
+Tkinter), then in Terminal:
+```bash
+python3 reward_editor.py
+```
+
+### First start of the Qt build
+
+If PySide6 isn't installed, the script creates a local `.venv` next to itself,
 installs PySide6 into it, and relaunches from that venv. This takes 1–2 minutes
 once and needs an internet connection. A virtual environment is used on purpose:
 it avoids the `externally-managed-environment` error (PEP 668) that a plain
 `pip install` triggers on modern Linux.
 
-If the automatic install fails (no internet, or `python3-venv` missing on Linux:
-`sudo apt install python3-venv`), just use `reward_editor_tk.py` instead.
+If the automatic install fails (no internet, or `python3-venv` missing on Linux),
+just run `reward_editor_tk.py` instead — it needs no installation.
 
 ## Finding your quests
 
