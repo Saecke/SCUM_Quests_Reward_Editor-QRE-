@@ -1,5 +1,7 @@
 # SCUM Quest Reward Editor
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
 A small desktop GUI to view and bulk-edit the **rewards** of custom SCUM
 quests (the `.json` files in your server's quest `Override` folder).
 
@@ -93,4 +95,4 @@ or `Reward_Backup_*/` folders (see `.gitignore`).
 
 ## License
 
-TODO: add a license (e.g. MIT) before publishing.
+Released under the [MIT License](LICENSE) — free to use, modify and share.
